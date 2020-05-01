@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Index</title>
+    <link rel="stylesheet" href="/css/index.css" />
+</head>
+<body>
+<div id="root" class="container">
+    <div class="row">
+        <div class="twelve columns">
+            <h1>My App</h1>
+            <ul>
+                <li v-for="koffieApparaatItem in koffieApparaatItems">
+                    <h3>{{koffieApparaatItem.name}}</h3>
+                    <hr />
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://vuejs.org/js/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#root',
+        data : {koffieApparaatItems: []},
+        mounted() {
+            console.log("Passes here 1");
+            this.fetchItems();
+            console.log("Passes here 2");
+        },
+
+        methods: {
+
+            fetchItems(){
+                console.log("Passes here 3");
+                axios.get("/koffieItems").then(function(response){
+                    this.items = response.data;
+                }.bind(this));
+            }
+        }
+    });
+</script>
+</html>

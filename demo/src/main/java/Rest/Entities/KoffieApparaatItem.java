@@ -1,4 +1,4 @@
-package Rest.Demo;
+package Rest.Entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
